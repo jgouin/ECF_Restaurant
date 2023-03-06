@@ -1,6 +1,19 @@
 <?php
-require_once('App/Config/data.php');
+
 require_once ('templates/header.php');
+require_once('Entity/Menu.php');
+require_once('Controller/MenuController.php');
+require_once('Entity/Category.php');
+require_once('Controller/CategoryController.php');
+require_once('Entity/Dish.php');
+require_once('Controller/DishController.php');
+
+$MenuController = new MenuController();
+$menus = $MenuController->getAll();
+$CategoryController = new CategoryController();
+$categories = $CategoryController->getAll();
+$DishController = new DishController();
+$dishes = $DishController->getAll();
 
 ?>
 
@@ -8,26 +21,32 @@ require_once ('templates/header.php');
     <div class="w-70 p-2">
         <h2>Les Menus</h2>
 
-        <?php foreach($menus as $key => $menu) { ?>
+        <?php foreach($menus as $menu) :?>
             <div class="card w-70 m-3 p-4">
                 <div class="card-title d-flex">
-                    <h4 class="w-100 px-3"><?= $menu['title']?></h4>
-                    <p style="font-weight: bold" class="flex-shrink-1 px-3"><?= $menu['price']?>€</p>
+                    <h4 class="w-100 px-3"><?= $menu->getTitle() ?>  <?= $menu->getPrice() ?>€</h4>
                 </div>
                 <div>
-                    <p style="font-weight: lighter"><?= $menu['description']?></p>
+                    <p style="font-weight: lighter"><?= $menu->getFormule()?></p>
                 </div>
-                
-
-                <?php foreach($dishes as $key => $dish) { ?>      
-                    <div class="card-body text-start">
-                        <p style="font-weight: bold"><?= $dish['title']?></p>
-                        <p><?= $dish['description']?></p>
+                <?php foreach($categories as $key => $category) { ?> 
+                         
+                    <div class="card-body">
+                    <?php foreach($dishes as $key => $dish) {  
+                        if (($dish->getCategory_id() === $category->getId()) && $dish->getMenu() === $menu->getTitle()){ ?>
+                            <div class="card-body">
+                                <p style="font-weight: bold"><?= $dish->getTitle()?></p>
+                                <p><?= $dish->getDescription()?></p>
+                            </div>
+                        <?php }; ?>
+                        
+                    <?php }; ?> 
                     </div>
-                <?php }; ?>
+                    <p>***</p>  
+                <?php }; ?>  
 
             </div>
-        <?php }; ?>
+        <?php endforeach ?>
 
     </div>
 </div>
