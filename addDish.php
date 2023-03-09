@@ -21,7 +21,6 @@ if($_POST) {
     $newDish = new Dish($_POST);
     $dishController->create($newDish);
     
-    
 }
 
 ?>

@@ -52,7 +52,7 @@ class DishController {
     {
         $req = $this->pdo->prepare($cmd);
 
-        $req->bindParam(":category_id", $dish->getCategory_id(), PDO::PARAM_INT);
+        $req->bindValue(":category_id", $dish->getCategory_id(), PDO::PARAM_INT);
         $req->bindValue(":title", $dish->getTitle(), PDO::PARAM_STR);
         $req->bindValue(":description", $dish->getDescription(), PDO::PARAM_STR);
         $req->bindValue(":price", $dish->getPrice(), PDO::PARAM_INT);
