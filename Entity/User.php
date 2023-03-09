@@ -38,7 +38,7 @@ class User {
     }
 
 
-    public function getUsername(): int
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -76,13 +76,15 @@ class User {
    
     public function setPassword(string $password): self
     {
-            $uppercase    = preg_match('@[A-Z]@', $password);
-            $lowercase    = preg_match('@[a-z]@', $password);
-            $number       = preg_match('@[0-9]@', $password);
-            
-            if ($uppercase && $lowercase && $number && strlen($password) > 8) {
-            $this->password = $password;
+     
+        $uppercase    = preg_match('@[A-Z]@', $password);
+        $lowercase    = preg_match('@[a-z]@', $password);
+        $number       = preg_match('@[0-9]@', $password);
+        
+        if ($uppercase && $lowercase && $number && strlen($password) > 8) {
+        $this->password = $password;
         }
+        
         return $this;
     }
 

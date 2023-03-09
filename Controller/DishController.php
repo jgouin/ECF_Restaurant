@@ -80,6 +80,7 @@ class DishController {
                     image = :image,
                     menu = :menu
                 WHERE id = :id";
+                
         $this->manageDish($cmd, $dish);
     }
 

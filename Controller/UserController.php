@@ -48,20 +48,22 @@ class UserController {
 
     public function create(User $newUser): void
     {
-        $req = $this->pdo->prepare("INSERT INTO `users` (username, email, password, nbCovers, allergies) VALUES (:username, :email, :password, :nbCovers, :allergies)");
+        $req = $this->pdo->prepare("INSERT INTO `users` (username, email, password, nbCovers, allergies) 
+                                    VALUES (:username, :email, :password, :nbCovers, :allergies)");
 
         $req->bindValue(":username", $newUser->getUsername(), PDO::PARAM_STR);
         $req->bindValue(":email", $newUser->getEmail(), PDO::PARAM_STR);
         $req->bindValue(":password", $newUser->getPassword(), PDO::PARAM_STR);
         $req->bindValue(":nbCovers", $newUser->getNbCovers(), PDO::PARAM_INT);
         $req->bindValue(":allergies", $newUser->getAllergies(), PDO::PARAM_STR);
-
+       
         $req->execute();
+        
     }
 
     public function update(User $user): void
     {
-        $req = $this->pdo->prepare("UPDATE `users` (username, email, password, nbCovers, allergies) VALUES (:username, :email, :password, :pnbCovers, :allergies)");
+        $req = $this->pdo->prepare("UPDATE `users` (username, email, password, nbCovers, allergies) VALUES (:username, :email, :password, :nbCovers, :allergies)");
 
         $req->bindValue(":username", $user->getUsername(), PDO::PARAM_STR);
         $req->bindValue(":email", $user->getEmail(), PDO::PARAM_STR);

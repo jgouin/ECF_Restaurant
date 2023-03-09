@@ -22,7 +22,6 @@ $dish = $DishController->get($_GET["id"]);
 if($_POST) {
  
     $dish->hydrate($_POST);
-    var_dump($dish);
     $DishController->update($dish);
     //echo "<script>window.location='index.php'</script>";
     
@@ -71,7 +70,7 @@ if($_POST) {
     </div>
 
     
-    <button class="btn btn-lg btn-warning" type="submit">Modifier</button>
+    <button class="btn btn-lg btn-warning" name="updateDish" type="submit">Modifier</button>
     <a class="btn btn-lg btn-danger" href="deleteDish.php?id=<?= $dish->getId() ?>">Supprimer</a>
     
 </form>

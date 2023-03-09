@@ -36,6 +36,17 @@ class CategoryController {
     
     }
 
+    public function getCategoryName()
+    {
+        $categories= [];
+        $req = $this->pdo->query("SELECT name FROM `categories`");
+        $data = $req->fetchAll();
+        foreach($data as $categoryName){
+            $categories[] = new Category($categoryName);
+        }
+        return $categories;
+    
+    }
     public function get(int $id)
     {
         $req = $this->pdo->prepare("SELECT * FROM `categories` WHERE id = :id");
