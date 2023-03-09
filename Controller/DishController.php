@@ -2,7 +2,7 @@
 <?php
 
 require_once ('./Config/DotEnv.php');
-
+require_once ('Entity/Dish.php');
 
 class DishController {
     
@@ -48,7 +48,7 @@ class DishController {
         return $dish;
     }
 
-    public function updateDish(string $cmd, Dish $dish): void
+    public function manageDish(string $cmd, Dish $dish): void
     {
         $req = $this->pdo->prepare($cmd);
 
@@ -62,11 +62,12 @@ class DishController {
         $req->execute();
     }
 
-    public function create(Dish $newDish): void
+    public function create(Dish $dish): void
     {
         $cmd = "INSERT INTO `dishes` (category_id, title, description, price, image, menu) 
-                VALUES (:category_id, :title, :description, :price, :image :menu)";
-        $this->updateDish($cmd, $newDish);
+                VALUES (:category_id, :title, :description, :price, :image, :menu)";
+
+        $this->manageDish($cmd, $dish);
     }
 
     public function update(Dish $dish): void
@@ -79,7 +80,7 @@ class DishController {
                     image = :image,
                     menu = :menu
                 WHERE id = :id";
-        $this->updateDish($cmd, $dish);
+        $this->manageDish($cmd, $dish);
     }
 
     public function delete(int $id): void
