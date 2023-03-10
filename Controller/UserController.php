@@ -36,10 +36,21 @@ class UserController {
         return $users;
     
     }
+
     public function get(int $id): User
     {
         $req = $this->pdo->prepare("SELECT * FROM `users` WHERE id = :id");
         $req->bindParam(":id", $id, PDO::PARAM_INT);
+        $req->execute();
+        $data = $req->fetch();
+        $user = new User($data);
+        return $user;
+    }
+
+    public function getUserByEmail(string $email): User
+    {
+        $req = $this->pdo->prepare("SELECT * FROM `users` WHERE email = :email");
+        $req->bindParam(":email", $email, PDO::PARAM_STR);
         $req->execute();
         $data = $req->fetch();
         $user = new User($data);
@@ -63,13 +74,22 @@ class UserController {
 
     public function update(User $user): void
     {
-        $req = $this->pdo->prepare("UPDATE `users` (username, email, password, nbCovers, allergies) VALUES (:username, :email, :password, :nbCovers, :allergies)");
+        $req = $this->pdo->prepare("UPDATE `users` 
+                                    SET username = :username,
+                                        email = :email,
+                                        password = :password,
+                                        nbCovers = :nbCovers,
+                                        allergies = :allergies 
+                                    WHERE id = :id");
 
+print_r($user);
+        $req->bindValue(":id", $user->getId(), PDO::PARAM_INT);
         $req->bindValue(":username", $user->getUsername(), PDO::PARAM_STR);
         $req->bindValue(":email", $user->getEmail(), PDO::PARAM_STR);
         $req->bindValue(":password", $user->getPassword(), PDO::PARAM_STR);
         $req->bindValue(":nbCovers", $user->getNbCovers(), PDO::PARAM_INT);
         $req->bindValue(":allergies", $user->getAllergies(), PDO::PARAM_STR);
+
 
         $req->execute();
     }

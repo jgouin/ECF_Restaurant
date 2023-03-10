@@ -81,7 +81,7 @@ class User {
         $lowercase    = preg_match('@[a-z]@', $password);
         $number       = preg_match('@[0-9]@', $password);
         
-        if ($uppercase && $lowercase && $number && strlen($password) > 8) {
+        if ($uppercase && $lowercase && $number && strlen($password) >= 8) {
         $this->password = $password;
         }
         
