@@ -1,7 +1,7 @@
 
 <?php
-require_once ('templates/header.php');
 require_once ('Entity/Dish.php');
+require_once ('templates/header.php');
 require_once ('Controller/DishController.php');
 require_once ('Entity/category.php');
 require_once ('Controller/CategoryController.php');

@@ -20,6 +20,12 @@ if($_POST) {
     $dishController = new DishController();
     $newDish = new Dish($_POST);
     $dishController->create($newDish);
+    echo ('<div class="alert alert-success"><p>Votre plat a été créé</p></div>');
+    echo "<script>
+            setTimeout(() => {
+              window.location='index.php';
+            }, '1500')
+          </script>";
     
 }
 

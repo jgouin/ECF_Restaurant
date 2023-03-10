@@ -23,13 +23,18 @@ if($_POST) {
  
     $dish->hydrate($_POST);
     $DishController->update($dish);
-    //echo "<script>window.location='index.php'</script>";
+    echo ('<div class="alert alert-success"><p>Vos modifications ont été prises en compte.</p></div>');
+    echo "<script>
+            setTimeout(() => {
+              window.location='newUser.php';
+            }, '1500')
+          </script>";
     
 }
 
 ?>
 
-<button class="btn text-end m-3 px-4"><a class="text-dark" href="modifyDish.php">Retour</a></button>
+<button class="btn text- end m-3 px-4"><a class="text-dark" href="modifyDish.php">Retour</a></button>
 
 <form class="text-center" method="POST">
     <div class="form-floating m-2 mx-5">
@@ -74,7 +79,6 @@ if($_POST) {
     <a class="btn btn-lg btn-danger" href="deleteDish.php?id=<?= $dish->getId() ?>">Supprimer</a>
     
 </form>
-
 
 
 

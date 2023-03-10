@@ -48,10 +48,36 @@ class DishController {
         return $dish;
     }
 
-    public function manageDish(string $cmd, Dish $dish): void
-    {
-        $req = $this->pdo->prepare($cmd);
+  
 
+    public function create(Dish $newDish): void
+    {
+        $req = $this->pdo->prepare("INSERT INTO `dishes` (category_id, title, description, price, image, menu) VALUES (:category_id, :title, :description, :price, :image, :menu)");
+
+        $req->bindValue(":category_id", $newDish->getCategory_id(), PDO::PARAM_INT);
+        $req->bindValue(":title", $newDish->getTitle(), PDO::PARAM_STR);
+        $req->bindValue(":description", $newDish->getDescription(), PDO::PARAM_STR);
+        $req->bindValue(":price", $newDish->getPrice(), PDO::PARAM_INT);
+        $req->bindValue(":image", $newDish->getImage(), PDO::PARAM_STR);
+        $req->bindValue(":menu", $newDish->getMenu(), PDO::PARAM_STR);
+
+        $req->execute();
+
+    }
+
+    public function update(Dish $dish): void
+    {
+        $req = $this->pdo->prepare("UPDATE `dishes`
+                SET id = :id,
+                    category_id = :category_id,
+                    title = :title,
+                    description = :description,
+                    price = :price,
+                    image = :image,
+                    menu = :menu
+                WHERE id = :id");
+
+        $req->bindValue(":id", $dish->getId(), PDO::PARAM_INT);
         $req->bindValue(":category_id", $dish->getCategory_id(), PDO::PARAM_INT);
         $req->bindValue(":title", $dish->getTitle(), PDO::PARAM_STR);
         $req->bindValue(":description", $dish->getDescription(), PDO::PARAM_STR);
@@ -59,29 +85,8 @@ class DishController {
         $req->bindValue(":image", $dish->getImage(), PDO::PARAM_STR);
         $req->bindValue(":menu", $dish->getMenu(), PDO::PARAM_STR);
 
-        $req->execute();
-    }
-
-    public function create(Dish $dish): void
-    {
-        $cmd = "INSERT INTO `dishes` (category_id, title, description, price, image, menu) 
-                VALUES (:category_id, :title, :description, :price, :image, :menu)";
-
-        $this->manageDish($cmd, $dish);
-    }
-
-    public function update(Dish $dish): void
-    {
-        $cmd = "UPDATE `dishes`
-                SET category_id = :category_id,
-                    title = :title,
-                    description = :description,
-                    price = :price,
-                    image = :image,
-                    menu = :menu
-                WHERE id = :id";
-                
-        $this->manageDish($cmd, $dish);
+        $req->execute();  
+       
     }
 
     public function delete(int $id): void
