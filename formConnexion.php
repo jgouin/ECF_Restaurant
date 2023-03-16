@@ -5,7 +5,7 @@ require_once ('Entity/User.php');
 require_once ('Controller/UserController.php');
 
 
-if (isset($_POST['loginUser'])) {
+if ($_POST) {
     
     $userController = new UserController();
     $user = $userController->getUserByEmail($_POST['email']);
@@ -21,7 +21,9 @@ if (isset($_POST['loginUser'])) {
         $_SESSION["allergies"] = $user->getAllergies();
 
         echo "<script>window.location='index.php';</script>";
+
     } else {
+
         echo ('<div class="alert alert-danger"><p>E-mail ou mot de passe incorrect</p></div>');
         echo "<script>
                 setTimeout(() => {
@@ -30,7 +32,7 @@ if (isset($_POST['loginUser'])) {
             </script>";
     }
     
-}
+ }
 
 ?>
 <p class="text-end m-3 px-4">

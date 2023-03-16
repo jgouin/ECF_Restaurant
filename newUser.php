@@ -6,13 +6,11 @@ require_once ('Controller/UserController.php');
 
 
 
-
 if ($_POST){
-  
+
   if ($_POST["password"] === $_POST["confirmPassword"]){
     unset($_POST["confirmPassword"]);
-    $_POST["password"] = password_hash(($_POST["password"]), PASSWORD_DEFAULT);
-    
+  
   } else {
     echo ('<div class="alert alert-danger"><p>Le mot passe ne correspond pas.</p></div>');
     echo "<script>
@@ -20,17 +18,32 @@ if ($_POST){
               window.location='newUser.php';
             }, '1500')
           </script>";
-  return;
-}
-  $newUser = new User($_POST);
-  $userController = new UserController();
-  $userController->create($newUser);
-  echo ('<div class="alert alert-success"><p>Votre compte à été créé</p></div>');
-  echo "<script>
+    return;
+  }
+
+  $password = $_POST['password'];
+
+  $uppercase    = preg_match('@[A-Z]@', $password);
+  $lowercase    = preg_match('@[a-z]@', $password);
+  $number       = preg_match('@[0-9]@', $password);
+
+
+  if ($uppercase && $lowercase && $number && strlen($password) >= 8) {
+    $_POST["password"] = password_hash(($_POST["password"]), PASSWORD_DEFAULT);
+
+    $newUser = new User($_POST);
+    $userController = new UserController();
+    $userController->create($newUser);
+    echo ('<div class="alert alert-success"><p>Votre compte à été créé</p></div>');
+    echo "<script>
             setTimeout(() => {
-              window.location='index.php';
+              window.location='formConnexion.php';
             }, '1500')
           </script>";
+  } else {
+    echo ('<div class="alert alert-danger"><p>Le mot de passe doit contenir au moins 8 caractères comprenant 1 majuscule, 1 minuscule et un chiffre</p></div>');
+
+  }
 }
 
 ?>
