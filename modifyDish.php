@@ -19,6 +19,8 @@ $dishes = $DishController->getAll();
 
 
 ?>
+<button class="btn text- end m-3 px-4"><a class="text-dark" href="index.php">Retour</a></button>
+
 
 <form class="text-center" action="updateDish.php" method="GET">
     <h2 class="mb-3">Modifier un plat</h2>
@@ -27,12 +29,13 @@ $dishes = $DishController->getAll();
         <select name="id" class="form-select" required id="id">
            
                 <?php foreach($categories as $category) { ?>
-                    <option disabled>------ <?= $category->getName() ?>------</option>
+                    <optgroup label="-----<?= $category->getName(); ?>-----">
                         <?php foreach($dishes as $dish) {  
                                 if ($dish->getCategory_id() === $category->getId()){ ?>
                                     <option value="<?= $dish->getId() ?>"><?= $dish->getTitle() ?></option>
                                 <?php $id = $dish->getId(); }; ?>
                             <?php }; ?> 
+                    </optgroup>
                 <?php }; ?>  
         </select>
     </div>

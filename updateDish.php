@@ -26,7 +26,7 @@ if($_POST) {
     echo ('<div class="alert alert-success"><p>Vos modifications ont été prises en compte.</p></div>');
     echo "<script>
             setTimeout(() => {
-              window.location='newUser.php';
+              window.location='modifyDish.php';
             }, '1500')
           </script>";
     

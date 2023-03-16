@@ -75,14 +75,15 @@ class UserController {
     public function update(User $user): void
     {
         $req = $this->pdo->prepare("UPDATE `users` 
-                                    SET username = :username,
+                                    SET id = :id,
+                                        username = :username,
                                         email = :email,
                                         password = :password,
                                         nbCovers = :nbCovers,
                                         allergies = :allergies 
                                     WHERE id = :id");
 
-print_r($user);
+
         $req->bindValue(":id", $user->getId(), PDO::PARAM_INT);
         $req->bindValue(":username", $user->getUsername(), PDO::PARAM_STR);
         $req->bindValue(":email", $user->getEmail(), PDO::PARAM_STR);

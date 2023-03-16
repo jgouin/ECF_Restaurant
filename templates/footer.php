@@ -13,14 +13,16 @@
             
         <span class="p-2 text-center">
             <p>Horaires d’ouverture</p>
-            <p><small>Lundi au Vendredi : 12h à 14h et de 19h à 21h</small></p>
-            <p><small>Samedi : 12h à 14h et de 19h à 23h</small></p>
-            <p><small>Dimanche : 12h à 16h</small></p>
+            <div class="m-0">
+                <p><small>Lundi au Dimanche:<br>12h à 14h</small></p>
+            </div>
         </span>
         </div>
-        <p class="mt-2 text-center"><small>04.75.56.78.29 - restaurant-quai-antique@gmail.com - 21 Place de la Mairie, 73000 Chambéry</small></p>
+        <p class="mt-2 text-center"><small>04.75.56.78.29 - restaurant-quai-antique@gmail.com - 21 Place de la Couronne, 73000 Chambéry</small></p>
 
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="script.js"></script>
     
 </body>
 

@@ -69,7 +69,7 @@ if (!isset($_SESSION['user'])){
             $interval = DateInterval::createFromDateString('1 day');
             $daterange = new DatePeriod($start_date, $interval ,$end_date);
         ?>
-        <select name="day" class="form-select" id="day" onchange="loadAvailableSlotsDay()" required>
+        <select name="day" class="form-select" id="day" onchange="loadSlotsHour()" required>
             <option disabled selected="selected">Choissiez un jour</option>
             <?php foreach($daterange as $date){ ?>
             <option id="selectedDay" value="<?= $date->format('d/m/y') ?>"><?= $date->format('d/m/y') ?></option>
