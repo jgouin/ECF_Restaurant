@@ -48,7 +48,7 @@ if ($_POST){
 
 ?>
 <div class="text-end m-3 px-4">
-    <small><a class="text-muted " href="formConnexion.php">J'ai déja un compte</a></small>
+    <small><a class="text-muted " href="formConnexion.php">J'ai déjà un compte</a></small>
 </div>
 
 <form class="text-center" method="POST">
@@ -88,7 +88,6 @@ if ($_POST){
         <label for="allergies">Allergie(s)</label>
     </div>
 
-    <p class="text-muted p-3">Si vous souhaitez réserver pour plus de 12 personnes, merci de nous contacter directement.</p>
     <button class="btn btn-lg btn-warning" type="submit">Envoyer</button>
 
     

@@ -4,26 +4,30 @@ body {
 }
 
 h1 {
-    font-size: 4vw;
-    letter-spacing: 5px;
-    color: #ffd900;
-    font-family: 'Apple Chancery', sans-serif;
-                                                
+    letter-spacing: 4px;                                             
 }
 
-h2,h3 {
+h1, h2, h3 {
     font-size: 4vw;
-    letter-spacing: 5px;
     color: #ffd900;
-    font-family: 'Apple Chancery', sans-serif;
-                                                
+    font-family: 'Apple Chancery', sans-serif;                                               
 }
-
 
 .card-img-top {
     width: 100%;
     height: 15vw;
     object-fit: cover;
+}
+
+.card {
+    overflow: hidden;
+}
+.zoom {
+  transition: transform 0.3s ease-in-out;
+}
+
+.zoom:hover {
+  transform: scale(1.15);
 }
 
 

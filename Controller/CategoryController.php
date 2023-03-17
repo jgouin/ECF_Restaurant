@@ -24,7 +24,7 @@ class CategoryController {
         return $this;
     }
 
-    public function getAll()
+    public function getAll() : array
     {
         $categories= [];
         $req = $this->pdo->query("SELECT * FROM `categories`");
@@ -36,7 +36,7 @@ class CategoryController {
     
     }
 
-    public function getCategoryName()
+    public function getCategoryName() : array
     {
         $categories= [];
         $req = $this->pdo->query("SELECT name FROM `categories`");
@@ -47,7 +47,7 @@ class CategoryController {
         return $categories;
     
     }
-    public function get(int $id)
+    public function get(int $id) :Category
     {
         $req = $this->pdo->prepare("SELECT * FROM `categories` WHERE id = :id");
         $req->bindParam(":id", $id, PDO::PARAM_INT);

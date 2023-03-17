@@ -25,7 +25,7 @@ class UserController {
         return $this;
     }
 
-    public function getAll()
+    public function getAll() : array
     {
         $users= [];
         $req = $this->pdo->query("SELECT * FROM `users`");

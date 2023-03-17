@@ -14,7 +14,7 @@
         <span class="p-2 text-center">
             <p>Horaires d’ouverture</p>
             <div class="m-0">
-                <p><small>Lundi au Dimanche:<br>12h à 14h</small></p>
+                <p><small>Lundi au Dimanche:<br>12h à 15h</small></p>
             </div>
         </span>
         </div>

@@ -29,10 +29,10 @@ $categories = $CategoryController->getAll();
                 <?php 
                     foreach($dishes as $dish) : 
                         if ($dish->getCategory_id() === $a){ ?>
-                    <div class="w-70 p-4">
+                    <div class="w-70">
                         <div class="d-flex justify-content-between">
                             <h5><?= $dish->getTitle()?></h5>
-                            <p><?= $dish->getPrice()?></p>
+                            <p><?= $dish->getPrice()?> €</p>
                         </div>
                         <p class="text-start"><?= $dish->getDescription() ?></p>
                     </div>

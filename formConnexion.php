@@ -36,7 +36,7 @@ if ($_POST) {
 
 ?>
 <p class="text-end m-3 px-4">
-    <small><a class="text-muted" href="newUser.php">Je créé mon compte</a></small>
+    <small><a class="text-muted" href="newUser.php">Je crée mon compte</a></small>
 </p>
 
 <form method="POST" class="text-center">

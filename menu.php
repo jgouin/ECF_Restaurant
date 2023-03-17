@@ -22,7 +22,7 @@ $dishes = $DishController->getAll();
         <h2>Les Menus</h2>
 
         <?php foreach($menus as $menu) :?>
-            <div class="card w-70 m-3 p-4">
+            <div class="card w-70 py-4 m-3">
                 <div class="card-title d-flex">
                     <h4 class="w-100 px-3"><?= $menu->getTitle() ?>  <?= $menu->getPrice() ?>€</h4>
                 </div>

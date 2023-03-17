@@ -5,3 +5,5 @@ function loadSlotsHour() {
     console.log(selectedDay);
     $('#slotHour').removeClass("d-none");
 };
+
+

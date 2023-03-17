@@ -40,7 +40,9 @@ class ReservationController {
     }
 
 
-    function getAllSlots(){
+    function getAllSlots() : array
+
+    {
         $slots = [];
         $ReservationController = new ReservationController();
         $reservations = $ReservationController->getAll();
@@ -50,7 +52,7 @@ class ReservationController {
         return $slots;
     }
 
-    public function getAllReservationByUserId(int $user_id)
+    public function getAllReservationByUserId(int $user_id) : array
     {
         $reservations= [];
         $req = $this->pdo->prepare("SELECT * FROM `reservation` WHERE user_id = :user_id");
@@ -91,33 +93,4 @@ class ReservationController {
 
     }
 
-    public function update(Reservation $reservation): void
-    {
-        $req = $this->pdo->prepare("UPDATE `reservation`
-                SET id = :id,
-                    user_id = :user_id,
-                    day = :day,
-                    hour = :hour,
-                    nbCovers = :nbCovers,
-                    allergies = :allergies,
-                WHERE id = :id");
-
-        $req->bindValue(":user_id", $reservation->getUser_id(), PDO::PARAM_INT);
-        $req->bindValue(":day", $reservation->getDay(), PDO::PARAM_STR);
-        $req->bindValue(":hour", $reservation->getHour(), PDO::PARAM_STR);
-        $req->bindValue(":nbCovers", $reservation->getNbCovers(), PDO::PARAM_INT);
-        $req->bindValue(":allergies", $reservation->getAllergies(), PDO::PARAM_STR);
-
-
-        $req->execute();  
-       
-    }
-
-    public function delete(int $id): void
-    {
-        $req = $this->pdo->prepare("DELETE FROM `reservation` WHERE id = :id");
-        $req->bindParam(":id", $id, PDO::PARAM_INT);
-
-        $req->execute();
-    }
 }
