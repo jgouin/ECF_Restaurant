@@ -7,7 +7,7 @@ As the adminstrator of the website, you can create, update, and delete informati
 
 ## Run Locally
 
-Clone the project on you terminal with:
+Clone the project on your terminal with:
 
 - git clone https://github.com/jgouin/ECF_Restaurant.git
 
@@ -20,4 +20,28 @@ Clone the project on you terminal with:
   DATABASE_DNS=mysql:host=localhost;dbname=Quai_Antique;port=....;
   DATABASE_USER=....
   DATABASE_PASSWORD=....
+  
+# Log in as a user 
+
+- You can create a new account by clicking on "Créer votre profil"
+- Submit the form with your informations
+- Log in with your email address and your password
+- Once on the main page you can see that you're beeing welcomed. 
+- If you click on the welcome message you can access your profil informations.
+
+- Return on the main page by clicking on "Retour"
+- If you want to book a table you can click on "Réserver votre table"
+- Submit the form and find back your reservation data on the profil. 
+
+- If you want to check the menus, go at the bottom of the page and click on either La Carte or Les Menus
+
+# Log in as the administrator
+
+- You can log in with the following informations:
+    + email address: quai_antique@chambery.fr
+    + password: $Resto73*
+- If you want to update the content of the website, click on any pictures.
+- Select the dish you want to update or delete.
+
+
 
