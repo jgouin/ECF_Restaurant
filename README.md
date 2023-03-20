@@ -11,9 +11,12 @@ Clone the project on you terminal with:
 
 - git clone https://github.com/jgouin/ECF_Restaurant.git
 
-- Import the Quai_Antique.sql file on your database software
+- Start your local server
 
-- create a file .env with you informations: 
+- Import the Quai_Antique.sql file on your database software
+(you can find it on Google Drive https://drive.google.com/drive/folders/1B1XFBtuUJTyVAgVMDq-i6c0rIvjRX6t_?usp=sharing)
+
+- create a file .env at the project root's folder with your informations: 
   DATABASE_DNS=mysql:host=localhost;dbname=Quai_Antique;port=....;
   DATABASE_USER=....
   DATABASE_PASSWORD=....
